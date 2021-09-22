@@ -30,5 +30,15 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ],
+  },  
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['./src']
+      }
+    }
   },
+
+
 };
