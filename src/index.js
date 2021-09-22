@@ -30,7 +30,6 @@ const showTasks = (() => {
 
     li.classList.add('d-flex', 'justify-content-between', 'border-m');
     tasksList.appendChild(li);
-    console.log(task.index);
   });
   const li = document.createElement('li');
   const p = document.createElement('p');
