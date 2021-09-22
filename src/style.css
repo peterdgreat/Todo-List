@@ -1,3 +1,44 @@
 body {
-  background-color: bisque;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #515151;
+}
+
+.bg {
+  background-color: #f6f6f6;
+  padding: 0.5rem;
+}
+
+.container-m {
+  width: 80%;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-container {
+  width: 100%;
+}
+
+.border-m {
+  height: 3rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.completed {
+  text-decoration: line-through;
 }
