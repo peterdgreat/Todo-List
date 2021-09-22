@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: './src/index.js',
     print: './src/tasks.js',
@@ -30,5 +30,13 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ],
+  },  
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['./src']
+      }
+    }
   },
 };
