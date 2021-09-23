@@ -17,25 +17,24 @@
 
 - Git & Github
 
-
-## Live Demo
-[Awesome-books](https://peterdgreat.github.io/awesome-books/)
-
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
 
 ### Setup
 * Open terminal
-* Clone this project by command git clone https://github.com/peterdgreat/awesome-books
-* Cd conference-event folder
-* Open index.html in the browser (you can use Live Server in Visual Studio Code)
+* Clone this project by command git clone(https://github.com/peterdgreat/Todo-List)
+* Cd Todo-List
 
+### install
+Run the following command to have all npm packages dependencies installed:
+
+npm install
 
 ### Usage
-#### For anyone who wants to practice Building a single page website without using a framwework.
-How to apply responsive design using flexbox and Bootstrap.
 
+To start the webpack-dev-server, run the following command:
 
+npm run start
 
 ## Authors
 
