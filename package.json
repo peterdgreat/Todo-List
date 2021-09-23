@@ -1,46 +1,35 @@
 {
-  "name": "web-pack",
+  "name": "Todo-List",
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch",
-    "start": "webpack serve --open",
-    "server": "node server.js",
-    "build": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/peterdgreat/web-pack.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/peterdgreat/web-pack/issues"
-  },
-  "homepage": "https://github.com/peterdgreat/web-pack#readme",
-  "devDependencies": {
+  "dependencies": {
     "babel-eslint": "^10.1.0",
-    "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
-    "express": "^4.17.1",
     "hint": "^6.1.4",
-    "html-webpack-plugin": "^5.3.2",
-    "style-loader": "^3.3.0",
+    "lodash": "^4.17.21",
+    "luxon": "^2.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.21.0",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-middleware": "^5.1.0",
+    "stylelint-scss": "^3.20.1",
     "webpack-dev-server": "^4.2.1"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  }
+  "devDependencies": {
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
