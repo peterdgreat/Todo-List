@@ -26,12 +26,9 @@ const showTasks = (() => {
     }
     input.addEventListener('change', () => {
       task.completed = input.checked;
+      new Tasks().statusChanges(li);
       if (task.completed === true) {
         li.classList.add('completed');
-        task.completed = true;
-      } else {
-        li.classList.remove('completed');
-        task.completed = false;
       }
       setLocal();
     });
@@ -55,7 +52,6 @@ const showTasks = (() => {
   li.appendChild(p);
   li.classList.add('d-flex', 'justify-content-around', 'bg');
   tasksList.appendChild(li);
-  console.log(tasksData);
 });
 
 function getLocal() {
