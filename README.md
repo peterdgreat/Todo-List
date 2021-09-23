@@ -19,7 +19,7 @@
 
 
 ## Live Server
-[Todo- List](https://docs.google.com/document/d/1WmZebVuFJ3DNeZota3ezm-0AYXd0gxPkUrQLzLsUZ5o/edit?usp=sharing)
+[Todo- List](https://hopeful-brown-dda6d4.netlify.app/)
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
