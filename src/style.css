@@ -40,5 +40,19 @@ ul {
 }
 
 .completed {
-  text-decoration: line-through;
+  position: relative;
+}
+
+p {
+  margin: inherit;
+}
+
+.completed::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: none;
+  border-bottom: 1px solid #111;
+  width: 100%;
 }

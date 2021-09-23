@@ -11,10 +11,17 @@ const showTasks = (() => {
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.checked = task.completed;
+    if (task.completed === true) {
+      li.classList.add('completed');
+    } else {
+      li.classList.remove('completed');
+    }
     input.addEventListener('change', () => {
       task.completed = input.checked;
       if (task.completed === true) {
         li.classList.add('completed');
+      } else {
+        li.classList.remove('completed');
       }
     });
     li.appendChild(input);
@@ -28,7 +35,7 @@ const showTasks = (() => {
     more.innerText = 'more_vert';
     li.appendChild(more);
 
-    li.classList.add('d-flex', 'justify-content-between', 'border-m');
+    li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center');
     tasksList.appendChild(li);
   });
   const li = document.createElement('li');
