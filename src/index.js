@@ -12,8 +12,7 @@ addValue.addEventListener('keypress', (e) => {
   }
 });
 
-//return local storage on load
 window.onload = () => {
- //get local storage
+  id = 0;
  Tasks.getLocal();
 };
