@@ -13,6 +13,5 @@ addValue.addEventListener('keypress', (e) => {
 });
 
 window.onload = () => {
-  id = 0;
- Tasks.getLocal();
+  Tasks.getLocal();
 };

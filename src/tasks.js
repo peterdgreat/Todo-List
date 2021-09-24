@@ -1,6 +1,7 @@
 import './style.css';
 
-// let id = 0;
+const refresh = document.querySelector('.refresh');
+const ul = document.querySelector('.tasks');
 export default class Tasks {
     static tasks = [];
 
@@ -25,7 +26,6 @@ export default class Tasks {
     }
 
     static showTasks() {
-      const ul = document.querySelector('.tasks');
       ul.innerHTML = '';
       Tasks.tasks.forEach((task) => {
         const li = document.createElement('li');
@@ -57,7 +57,7 @@ export default class Tasks {
         li.appendChild(more);
 
         li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center');
-        li.addEventListener('click', () => {
+        description.addEventListener('click', () => {
           // edit task off selected id
           Tasks.editTask(task.index);
 
@@ -67,11 +67,6 @@ export default class Tasks {
             // delete selected item from dom
             li.remove();
             Tasks.deleteTask(task.index);
-            // task.index -= 1;
-
-            // remove from dom
-
-            // remove from local storage
             Tasks.setLocal();
           });
         });
@@ -81,7 +76,10 @@ export default class Tasks {
       const p = document.createElement('p');
       p.innerText = 'Clear all completed';
       li.appendChild(p);
-      li.classList.add('d-flex', 'justify-content-around', 'bg');
+      li.classList.add('d-flex', 'justify-content-around', 'bg', 'cursor');
+      li.addEventListener('click', () => {
+        Tasks.deleteCompleted();
+      });
       ul.appendChild(li);
     }
 
@@ -95,18 +93,8 @@ export default class Tasks {
     }
 
     addTasks() {
-      // push to array in sorted order
-      // Tasks.tasks.push(this);
-      // sort array and push
-      Tasks.tasks.sort((a, b) => {
-        if (a.index > b.index) {
-          return 1;
-        }
-        if (a.index < b.index) {
-          return -1;
-        }
-        return 0;
-      });
+      // eslint-disable-next-line no-return-assign
+      Tasks.tasks.forEach((e, i) => e.index = i + 1);
       // push from the last index deleted
       Tasks.tasks.push(this);
       // remove repeated tasks
@@ -132,7 +120,6 @@ export default class Tasks {
       Tasks.setLocal();
     }
 
-    // change description to input text
     static editTask(index) {
       // const li = document.querySelector(`li:nth-child(${index})`);
       const description = document.querySelectorAll('p');
@@ -145,22 +132,26 @@ export default class Tasks {
           Tasks.showTasks();
         });
       });
-      // input.value = description.innerText;
-      // check if description is empty or not
+    }
 
-      // li.removeChild(description);
-      // check if description is a child element of l
-      // content editable = true
+    // delete all tasks
+    static deleteAllTasks() {
+      Tasks.tasks = [];
+      Tasks.setLocal();
+    }
 
-      // input.addEventListener('keyup', (e) => {
-      //   if (e.keyCode === 13) {
-      //     // li.replaceChild(description, input)
-
-      //     description.innerText = this.task.description;
-      //     Tasks.tasks[index].description = this.tasks.description;
-      //     Tasks.setLocal();
-      //     Tasks.showTasks();
-      //   }
-      // });
+    static deleteCompleted() {
+      const domStay = document.querySelectorAll('.completed');
+      const stay = Tasks.tasks.filter((task) => task.completed === false);
+      Tasks.tasks = stay;
+      domStay.forEach((domEl) => {
+        domEl.remove();
+      });
+      this.setLocal();
     }
 }
+
+refresh.addEventListener('click', () => {
+  Tasks.deleteAllTasks();
+  ul.remove();
+});

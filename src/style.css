@@ -47,6 +47,14 @@ p {
   margin: inherit;
 }
 
+.material-icons {
+  cursor: pointer;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
 .completed::before {
   content: "";
   position: absolute;
