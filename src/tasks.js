@@ -140,7 +140,7 @@ export default class Tasks {
             Tasks.setLocal();
             Tasks.showTasks();
           }
-        })
+        });
       });
     }
 
