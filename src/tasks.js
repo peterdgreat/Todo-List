@@ -59,6 +59,8 @@ export default class Tasks {
         li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center');
         description.addEventListener('click', () => {
           // edit task off selected id
+          li.classList.add('bg-col');
+          description.classList.add('desc');
           Tasks.editTask(task.index);
 
           // remove class edit
@@ -131,6 +133,14 @@ export default class Tasks {
           Tasks.setLocal();
           Tasks.showTasks();
         });
+        desc.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            desc.setAttribute('contenteditable', 'false');
+            Tasks.tasks[index - 1].description = desc.innerText;
+            Tasks.setLocal();
+            Tasks.showTasks();
+          }
+        })
       });
     }
 

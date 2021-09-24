@@ -51,6 +51,16 @@ p {
   cursor: pointer;
 }
 
+.bg-col {
+  background-color: hsl(61, 85%, 70%);
+}
+
+.desc {
+  border: none;
+  max-height: 100%;
+  width: 100%;
+}
+
 .cursor {
   cursor: pointer;
 }
