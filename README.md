@@ -3,6 +3,8 @@
 
 > This is a simple Todo List
 
+![screenshot](/img/todo.png ) 
+
 ## Built With
 
 - HTML5
