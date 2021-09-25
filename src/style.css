@@ -61,6 +61,10 @@ p {
   width: 100%;
 }
 
+desc:focus {
+  border: none;
+}
+
 .cursor {
   cursor: pointer;
 }

@@ -56,8 +56,9 @@ export default class Tasks {
         more.innerText = 'more_vert';
         li.appendChild(more);
 
-        li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center');
-        description.addEventListener('click', () => {
+        li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center', 'descr');
+
+        li.addEventListener('click', () => {
           // edit task off selected id
           li.classList.add('bg-col');
           description.classList.add('desc');
@@ -67,22 +68,22 @@ export default class Tasks {
           more.innerText = 'delete';
           more.addEventListener('click', () => {
             // delete selected item from dom
-            li.remove();
+            ul.removeChild(li);
             Tasks.deleteTask(task.index);
             Tasks.setLocal();
           });
         });
         ul.appendChild(li);
       });
-      const li = document.createElement('li');
-      const p = document.createElement('p');
+      const liC = document.createElement('li');
+      const p = document.createElement('h5');
       p.innerText = 'Clear all completed';
-      li.appendChild(p);
-      li.classList.add('d-flex', 'justify-content-around', 'bg', 'cursor');
-      li.addEventListener('click', () => {
+      liC.appendChild(p);
+      liC.classList.add('d-flex', 'justify-content-around', 'bg', 'cursor');
+      liC.addEventListener('click', () => {
         Tasks.deleteCompleted();
       });
-      ul.appendChild(li);
+      ul.appendChild(liC);
     }
 
     static getLocal() {
@@ -163,5 +164,5 @@ export default class Tasks {
 
 refresh.addEventListener('click', () => {
   Tasks.deleteAllTasks();
-  ul.remove();
+  ul.innerHTML = '';
 });
