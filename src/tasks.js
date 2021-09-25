@@ -2,6 +2,7 @@ import './style.css';
 
 const refresh = document.querySelector('.refresh');
 const ul = document.querySelector('.tasks');
+const deleteAll = document.querySelector('.delete-all');
 export default class Tasks {
     static tasks = [];
 
@@ -75,15 +76,6 @@ export default class Tasks {
         });
         ul.appendChild(li);
       });
-      const liC = document.createElement('li');
-      const p = document.createElement('h5');
-      p.innerText = 'Clear all completed';
-      liC.appendChild(p);
-      liC.classList.add('d-flex', 'justify-content-around', 'bg', 'cursor');
-      liC.addEventListener('click', () => {
-        Tasks.deleteCompleted();
-      });
-      ul.appendChild(liC);
     }
 
     static getLocal() {
@@ -96,10 +88,16 @@ export default class Tasks {
     }
 
     addTasks() {
-      // eslint-disable-next-line no-return-assign
-      Tasks.tasks.forEach((e, i) => e.index = i + 1);
-      // push from the last index deleted
-      Tasks.tasks.push(this);
+      // check if array is empty
+      if (Tasks.tasks.length === 0) {
+        // set index to 1
+        this.index = 1;
+        Tasks.tasks.push(this);
+      } else if (Tasks.tasks.length > 0) {
+        // set index to last index + 1
+        this.index = Tasks.tasks[Tasks.tasks.length - 1].index + 1;
+        Tasks.tasks.push(this);
+      }
       // remove repeated tasks
       Tasks.tasks = Tasks.tasks.filter((task, index, self) => index === self.findIndex((t) => (
         t.description === task.description
@@ -111,16 +109,12 @@ export default class Tasks {
 
     // delete task
     static deleteTask(index) {
-      // delete from an array in order
-      if (index === 1 || this.tasks.length === 1) {
-        Tasks.tasks.splice(0, 1);
-      } else if (index === this.tasks.length) {
-        Tasks.tasks.splice(this.tasks.length - 1, 1);
-      } else {
-        Tasks.tasks.splice(index, 1);
-      }
-      // set local
+      // delete from an array and update the index in the array
+      Tasks.tasks.splice(index - 1, 1);
+      // eslint-disable-next-line no-return-assign
+      Tasks.tasks.forEach((task, i) => task.index = i + 1);
       Tasks.setLocal();
+      Tasks.showTasks();
     }
 
     static editTask(index) {
@@ -161,6 +155,15 @@ export default class Tasks {
       this.setLocal();
     }
 }
+const liC = document.createElement('li');
+const p = document.createElement('h5');
+p.innerText = 'Clear all completed';
+liC.appendChild(p);
+liC.classList.add('d-flex', 'justify-content-around', 'bg', 'cursor');
+liC.addEventListener('click', () => {
+  Tasks.deleteCompleted();
+});
+deleteAll.appendChild(liC);
 
 refresh.addEventListener('click', () => {
   Tasks.deleteAllTasks();
