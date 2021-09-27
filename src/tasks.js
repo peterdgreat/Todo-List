@@ -35,8 +35,10 @@ export default class Tasks {
         input.checked = task.completed;
         if (task.completed === true) {
           li.classList.add('completed');
+          li.classList.remove('bg-col');
         } else {
           li.classList.remove('completed');
+          li.classList.remove('bg-col');
         }
         input.addEventListener('change', () => {
           task.completed = input.checked;
