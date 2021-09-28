@@ -21,7 +21,7 @@
 
 
 ## Live Server
-[Todo- List](https://hopeful-brown-dda6d4.netlify.app/)
+[Todo- List](https://peterdgreat.github.io/Todo-List/dist/)
 
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
