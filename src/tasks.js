@@ -1,23 +1,24 @@
 import Crud from './crud';
 import './style.css';
 
+const crud = new Crud();
 const refresh = document.querySelector('.refresh');
 const ul = document.querySelector('.tasks');
 const deleteAll = document.querySelector('.delete-all');
 export default class Tasks {
-  statusChanges(li) {
-    if (this.completed === true) {
+  static statusChanges(li) {
+    if (crud.completed === true) {
       li.classList.add('completed');
-      this.completed = true;
+      crud.completed = true;
     } else {
       li.classList.remove('completed');
-      this.completed = false;
+      crud.completed = false;
     }
   }
 
   static showTasks() {
     ul.innerHTML = '';
-    Tasks.tasks.forEach((task) => {
+    Crud.tasks.forEach((task) => {
       const li = document.createElement('li');
       const input = document.createElement('input');
       input.type = 'checkbox';
@@ -27,11 +28,10 @@ export default class Tasks {
         li.classList.remove('bg-col');
       } else {
         li.classList.remove('completed');
-        li.classList.remove('bg-col');
       }
       input.addEventListener('change', () => {
         task.completed = input.checked;
-        new Tasks().statusChanges(li);
+        Tasks.statusChanges(li);
         if (task.completed === true) {
           li.classList.add('completed');
         }
@@ -50,7 +50,7 @@ export default class Tasks {
 
       li.classList.add('d-flex', 'justify-content-between', 'border-m', 'align-items-center', 'text-center', 'descr');
 
-      li.addEventListener('click', () => {
+      li.addEventListener('dblclick', () => {
         // edit task off selected id
         li.classList.add('bg-col');
         description.classList.add('desc');
@@ -61,44 +61,12 @@ export default class Tasks {
         more.addEventListener('click', () => {
           // delete selected item from dom
           ul.removeChild(li);
-          Tasks.deleteTask(task.index);
-          Tasks.setLocal();
+          Crud.deleteTask(task.index);
+          Crud.setLocal();
         });
       });
       ul.appendChild(li);
     });
-  }
-
-
-
-  addTasks() {
-    // check if array is empty
-    if (Tasks.tasks.length === 0) {
-      // set index to 1
-      this.index = 1;
-      Tasks.tasks.push(this);
-    } else if (Tasks.tasks.length > 0) {
-      // set index to last index + 1
-      this.index = Tasks.tasks[Tasks.tasks.length - 1].index + 1;
-      Tasks.tasks.push(this);
-    }
-    // remove repeated tasks
-    Tasks.tasks = Tasks.tasks.filter((task, index, self) => index === self.findIndex((t) => (
-      t.description === task.description
-    )));
-    Tasks.setLocal();
-    // add Tasks to dom
-    Tasks.showTasks();
-  }
-
-  // delete task
-  static deleteTask(index) {
-    // delete from an array and update the index in the array
-    Tasks.tasks.splice(index - 1, 1);
-    // eslint-disable-next-line no-return-assign
-    Tasks.tasks.forEach((task, i) => task.index = i + 1);
-    Tasks.setLocal();
-    Tasks.showTasks();
   }
 
   static editTask(index) {
@@ -108,35 +76,32 @@ export default class Tasks {
       desc.setAttribute('contenteditable', 'true');
       desc.addEventListener('blur', () => {
         desc.setAttribute('contenteditable', 'false');
-        Tasks.tasks[index - 1].description = desc.innerText;
-        Tasks.setLocal();
+        Crud.tasks[index - 1].description = desc.innerText;
+        desc.setAttribute('contenteditable', 'false');
+        desc.classList.remove('bg-col');
+        Crud.setLocal();
         Tasks.showTasks();
       });
       desc.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           desc.setAttribute('contenteditable', 'false');
-          Tasks.tasks[index - 1].description = desc.innerText;
-          Tasks.setLocal();
+          Crud.tasks[index - 1].description = desc.innerText;
+          desc.classList.remove('bg-col');
+          Crud.setLocal();
           Tasks.showTasks();
         }
       });
     });
   }
 
-  // delete all tasks
-  static deleteAllTasks() {
-    Tasks.tasks = [];
-    Tasks.setLocal();
-  }
-
   static deleteCompleted() {
     const domStay = document.querySelectorAll('.completed');
-    const stay = Tasks.tasks.filter((task) => task.completed === false);
-    Tasks.tasks = stay;
+    const stay = Crud.tasks.filter((task) => task.completed === false);
+    Crud.tasks = stay;
     domStay.forEach((domEl) => {
       domEl.remove();
     });
-    this.setLocal();
+    Crud.setLocal();
   }
 }
 const liC = document.createElement('li');
@@ -150,6 +115,6 @@ liC.addEventListener('click', () => {
 deleteAll.appendChild(liC);
 
 refresh.addEventListener('click', () => {
-  Tasks.deleteAllTasks();
+  Crud.deleteAllTasks();
   ul.innerHTML = '';
 });

@@ -26,7 +26,9 @@ export default class Crud {
       Crud.tasks = Crud.tasks.filter((task, index, self) => index === self.findIndex((t) => (
         t.description === task.description
       )));
+
       Crud.setLocal();
+      return Crud.tasks;
     }
 
     // delete task
@@ -36,7 +38,6 @@ export default class Crud {
       // eslint-disable-next-line no-return-assign
       Crud.tasks.forEach((task, i) => task.index = i + 1);
       Crud.setLocal();
-      Crud.showTasks();
     }
 
     static getLocal() {
