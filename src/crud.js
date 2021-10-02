@@ -38,6 +38,7 @@ export default class Crud {
       // eslint-disable-next-line no-return-assign
       Crud.tasks.forEach((task, i) => task.index = i + 1);
       Crud.setLocal();
+      return Crud.tasks;
     }
 
     static getLocal() {
