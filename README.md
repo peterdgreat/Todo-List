@@ -46,9 +46,9 @@ npm run start
 
 👤 **Ajayi Peter**
 
-- GitHub: [@githubhandle](https://github.com/peterdgreat)
-- Twitter: [@twitterhandle](https://twitter.com/dev_Peter_O)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/ajayi-peter-4391ab1b5)
+- GitHub: [@peterdgreat](https://github.com/peterdgreat)
+- Twitter: [@dev_peter_o](https://twitter.com/dev_Peter_O)
+- LinkedIn: [ajayipeter](https://linkedin.com/in/ajayipeter)
 
 ## Show your support
 
